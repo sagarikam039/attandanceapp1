@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Attendance Taker</title>
+    <link rel="stylesheet" href="./AttendanceTakerVerifier_files/FlexML.css" type="text/css">
+    <style>
+        /* Add your styles here */
+        .formError {
+            color: red;
+        }
+
+        :root {
+            --subtleBackground: #f2f2ff;
+        }
+
+        #middleUpperPadding {
+            background: var(--subtleBackground);
+        }
+
+        @media all and (max-width: 700px) {
+            #middleUpperPadding {
+                flex-basis: 0%;
+                flex-grow: 0.5;
+            }
+        }
+
+        @media not all and (max-width: 700px) {
+            #middleUpperPadding {
+                flex-basis: 20%;
+            }
+        }
+
+        #leftPadding, #rightPadding {
+            flex-basis: 20%;
+            background: var(--subtleBackground);
+        }
+    </style>
+</head>
+<body>
+    <div row="" grow="">
+        <div id="leftPadding" shrink="" style="padding-left: 1vw; padding-top: 1vh;">
+            <!-- Add a label for better accessibility -->
+            <label for="backButton">^ Hit the back button to go back</label>
+        </div>
+        <div id="middleContent" column="" grow="" shrink="" style="min-width: 0;">
+            <div id="middleUpperPadding" shrink=""></div>
+            <div column="" grow="">
+                <h2 style="font-size: 200%; margin: 0 auto 0 auto;">Paste the receipt from the student.</h2>
+                <form action="http://attendance.refactoringtutor.com/verifyReceipt/" method="post">
+                    <!-- Posts to the same url as the home page -->
+                    <input type="hidden" name="csrfmiddlewaretoken" value="Qc348eU1jiWRFwEy0ZyA2SumpWaY6v0mZD87Vn2KoIQXM5b28eZ0g4dEjrXOWreI">
+                    <div column="" class="fieldWrapper">
+                        <label for="id_receipt">Receipt</label> <!-- Add 'for' attribute here -->
+                        <div row="">
+                            <div grow="" style="display: inline;"> </div>
+                            <div class="formError" style="color: red;"></div>
+                        </div>
+                        <textarea name="receipt" cols="40" rows="10" id="id_receipt"></textarea>
+                        <p class="help">A bunch of jumbled text you got when you took attendance.</p>
+                    </div><br>
+                    <button type="submit">Verify Receipt</button>
+                </form>
+            </div>
+            <div grow="" shrink="" style="flex-basis: 20%; background: var(--subtleBackground);"></div>
+        </div>
+        <div id="rightPadding" shrink="" style="text-align: right; padding-right: 1vw; padding-top: 1vh;">
+            Attendance Taker v1.2
+        </div>
+    </div>
+</body>
+</html>
+
